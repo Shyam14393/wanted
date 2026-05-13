@@ -14,7 +14,7 @@ async function getSalesforceToken() {
   });
 
   const response = await fetch(
-    'https://orgfarm-34f298c660-dev-ed.develop.lightning.force.com/services/oauth2/token',
+    'https://orgfarm-34f298c660-dev-ed.develop.my.salesforce.com/services/oauth2/token',
     {
       method:  'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
