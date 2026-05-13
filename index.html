@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aspirants Hub — Coaching Institute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0e1a12;
+      --cream: #f5f0e8;
+      --gold: #c9973a;
+      --gold-light: #f0d89a;
+      --forest: #1a3d2b;
+      --forest-mid: #2d6645;
+      --forest-pale: #e8f2ec;
+      --charcoal: #2c3e35;
+      --muted: #7a8c82;
+      --white: #ffffff;
+      --border: rgba(14,26,18,0.12);
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body: 'DM Sans', system-ui, sans-serif;
+      --radius: 4px;
+      --radius-lg: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-body);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+      background: rgba(245,240,232,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px; text-decoration: none;
+    }
+    .nav-logo-mark {
+      width: 36px; height: 36px;
+      background: var(--forest);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 18px; font-weight: 700;
+      color: var(--gold-light);
+      letter-spacing: -0.5px;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-family: var(--ff-display);
+      font-size: 20px; font-weight: 600;
+      color: var(--forest);
+      letter-spacing: 0.2px;
+    }
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--forest);
+      color: var(--cream) !important;
+      padding: 9px 22px;
+      border-radius: 100px;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--forest-mid) !important; color: var(--cream) !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.3s; }
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; right: 0; z-index: 99;
+      background: var(--cream); border-bottom: 1px solid var(--border);
+      padding: 24px 5vw;
+      flex-direction: column; gap: 20px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 16px; font-weight: 500; color: var(--charcoal); text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding: 100px 5vw 80px;
+      display: flex; align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 70% at 80% 50%, rgba(26,61,43,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 10% 90%, rgba(201,151,58,0.06) 0%, transparent 50%);
+    }
+    .hero-grid-pattern {
+      position: absolute; inset: 0; opacity: 0.03;
+      background-image: 
+        linear-gradient(var(--ink) 1px, transparent 1px),
+        linear-gradient(90deg, var(--ink) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; max-width: 760px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--forest);
+      color: var(--gold-light);
+      font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero-badge-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    .hero h1 {
+      font-family: var(--ff-display);
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--ink);
+      letter-spacing: -2px;
+      margin-bottom: 28px;
+    }
+    .hero h1 em { font-style: italic; color: var(--forest-mid); }
+    .hero-sub {
+      font-size: 18px; font-weight: 300;
+      color: var(--charcoal);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 44px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--forest);
+      color: var(--cream);
+      padding: 14px 32px; border-radius: 100px;
+      font-size: 15px; font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: var(--forest-mid); transform: translateY(-1px); }
+    .btn-primary svg { transition: transform 0.2s; }
+    .btn-primary:hover svg { transform: translateX(3px); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1.5px solid var(--forest);
+      color: var(--forest);
+      padding: 14px 32px; border-radius: 100px;
+      font-size: 15px; font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-outline:hover { background: var(--forest); color: var(--cream); }
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 60px;
+      padding-top: 40px; border-top: 1px solid var(--border);
+    }
+    .hero-stat-num {
+      font-family: var(--ff-display);
+      font-size: 36px; font-weight: 700; color: var(--forest);
+      letter-spacing: -1px;
+    }
+    .hero-stat-label { font-size: 13px; color: var(--muted); font-weight: 400; margin-top: 2px; }
+    .hero-visual {
+      position: absolute; right: 5vw; top: 50%; transform: translateY(-50%);
+      width: clamp(280px, 35vw, 480px);
+      opacity: 0.9;
+    }
+    .hero-card-stack { position: relative; height: 360px; }
+    .h-card {
+      position: absolute;
+      background: var(--white);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: 0 4px 40px rgba(14,26,18,0.08);
+    }
+    .h-card-1 { width: 240px; top: 40px; right: 0; }
+    .h-card-2 { width: 200px; top: 0; right: 60px; background: var(--forest); color: var(--cream); border-color: transparent; }
+    .h-card-3 { width: 200px; bottom: 20px; right: 20px; }
+    .h-card-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--forest-pale); display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+    .h-card-2 .h-card-icon { background: rgba(255,255,255,0.15); }
+    .h-card-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .h-card-2 .h-card-title { color: var(--gold-light); }
+    .h-card-val { font-family: var(--ff-display); font-size: 28px; font-weight: 700; color: var(--forest); }
+    .h-card-2 .h-card-val { color: var(--white); }
+    .h-card-sub { font-size: 12px; color: var(--muted); }
+    .h-card-2 .h-card-sub { color: rgba(255,255,255,0.6); }
+    .h-bar-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .h-bar-label { font-size: 11px; color: var(--muted); width: 50px; }
+    .h-bar-track { flex: 1; height: 6px; background: var(--forest-pale); border-radius: 3px; }
+    .h-bar-fill { height: 100%; border-radius: 3px; background: var(--gold); }
+    .h-avatar-row { display: flex; }
+    .h-avatar { width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--white); margin-left: -8px; background: var(--forest-mid); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--cream); }
+    .h-avatar:first-child { margin-left: 0; }
+
+    /* ── SECTION BASICS ── */
+    section { padding: 100px 5vw; }
+    .section-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(36px, 5vw, 60px);
+      font-weight: 700; line-height: 1.1; letter-spacing: -1px;
+      color: var(--ink); margin-bottom: 20px;
+    }
+    .section-title em { font-style: italic; color: var(--forest-mid); }
+    .section-sub { font-size: 17px; color: var(--charcoal); max-width: 540px; font-weight: 300; line-height: 1.7; }
+
+    /* ── ABOUT ── */
+    .about { background: var(--forest); color: var(--cream); }
+    .about .section-label { color: var(--gold); }
+    .about .section-title { color: var(--cream); }
+    .about .section-sub { color: rgba(245,240,232,0.7); max-width: 600px; }
+    .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+    .about-val {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .about-val-icon { font-size: 28px; margin-bottom: 12px; }
+    .about-val-title { font-weight: 600; font-size: 15px; margin-bottom: 6px; color: var(--gold-light); }
+    .about-val-text { font-size: 13px; color: rgba(245,240,232,0.65); line-height: 1.6; }
+    .about-right { }
+    .about-quote {
+      font-family: var(--ff-display);
+      font-size: clamp(26px, 3vw, 38px);
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--gold-light);
+      padding-left: 28px;
+      border-left: 3px solid var(--gold);
+      margin-bottom: 40px;
+    }
+    .about-img-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; }
+    .about-img-block {
+      background: rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .about-img-block-num {
+      font-family: var(--ff-display);
+      font-size: 48px; font-weight: 700; color: var(--gold);
+    }
+    .about-img-block-label { font-size: 13px; color: rgba(245,240,232,0.65); margin-top: 4px; }
+    .about-img-block-sm {
+      background: rgba(201,151,58,0.15);
+      border: 1px solid rgba(201,151,58,0.3);
+    }
+
+    /* ── PROGRAMS ── */
+    .programs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
+    .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .program-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .program-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--forest);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .program-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(14,26,18,0.1); }
+    .program-card:hover::before { transform: scaleX(1); }
+    .program-card.featured { background: var(--forest); color: var(--cream); border-color: transparent; }
+    .program-card.featured::before { background: var(--gold); }
+    .program-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: var(--forest-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 20px;
+    }
+    .program-card.featured .program-icon { background: rgba(255,255,255,0.12); }
+    .program-tag {
+      display: inline-block;
+      font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px;
+      background: var(--forest-pale); color: var(--forest);
+      margin-bottom: 16px;
+    }
+    .program-card.featured .program-tag { background: rgba(255,255,255,0.15); color: var(--gold-light); }
+    .program-title {
+      font-family: var(--ff-display);
+      font-size: 24px; font-weight: 700;
+      color: var(--ink); margin-bottom: 10px; line-height: 1.2;
+    }
+    .program-card.featured .program-title { color: var(--cream); }
+    .program-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 24px; }
+    .program-card.featured .program-desc { color: rgba(245,240,232,0.7); }
+    .program-topics { list-style: none; margin-bottom: 28px; }
+    .program-topics li {
+      font-size: 13px; color: var(--charcoal);
+      display: flex; align-items: center; gap: 8px;
+      padding: 5px 0; border-bottom: 1px solid var(--forest-pale);
+    }
+    .program-card.featured .program-topics li { color: rgba(245,240,232,0.8); border-color: rgba(255,255,255,0.1); }
+    .program-topics li::before { content: '→'; color: var(--gold); font-size: 12px; }
+    .program-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 20px; border-top: 1px solid var(--border);
+    }
+    .program-card.featured .program-footer { border-top-color: rgba(255,255,255,0.1); }
+    .program-duration { font-size: 13px; color: var(--muted); font-weight: 400; }
+    .program-card.featured .program-duration { color: rgba(245,240,232,0.6); }
+    .program-link {
+      font-size: 13px; font-weight: 600; color: var(--forest);
+      text-decoration: none; display: flex; align-items: center; gap: 4px;
+      transition: gap 0.2s;
+    }
+    .program-card.featured .program-link { color: var(--gold-light); }
+    .program-link:hover { gap: 8px; }
+
+    /* ── WHY US ── */
+    .why { background: var(--cream); }
+    .why-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; }
+    .why-features { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+    .why-feat {
+      display: flex; gap: 20px; padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .why-feat:first-child { border-top: 1px solid var(--border); }
+    .why-feat-num {
+      font-family: var(--ff-display);
+      font-size: 48px; font-weight: 700;
+      color: var(--border); line-height: 1;
+      flex-shrink: 0; width: 60px;
+      transition: color 0.3s;
+    }
+    .why-feat:hover .why-feat-num { color: var(--gold); }
+    .why-feat-body {}
+    .why-feat-title { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+    .why-feat-text { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .why-right { padding-top: 48px; }
+    .why-testimonials { display: flex; flex-direction: column; gap: 20px; }
+    .why-test {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .why-test-stars { color: var(--gold); font-size: 14px; margin-bottom: 12px; }
+    .why-test-text { font-size: 14px; color: var(--charcoal); line-height: 1.7; font-style: italic; margin-bottom: 16px; }
+    .why-test-author { display: flex; align-items: center; gap: 12px; }
+    .why-test-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--forest);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 600; color: var(--cream);
+      flex-shrink: 0;
+    }
+    .why-test-name { font-size: 14px; font-weight: 600; color: var(--ink); }
+    .why-test-role { font-size: 12px; color: var(--muted); }
+    .why-test-badge {
+      display: inline-block; font-size: 11px; font-weight: 600;
+      padding: 2px 10px; border-radius: 100px;
+      background: var(--forest-pale); color: var(--forest);
+      margin-left: auto;
+    }
+
+    /* ── RESULTS ── */
+    .results { background: var(--forest); overflow: hidden; }
+    .results .section-label { color: var(--gold); }
+    .results .section-title { color: var(--cream); }
+    .results-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(255,255,255,0.08); margin-top: 60px; }
+    .result-cell {
+      background: var(--forest);
+      padding: 48px 32px; text-align: center;
+      transition: background 0.2s;
+    }
+    .result-cell:hover { background: rgba(255,255,255,0.05); }
+    .result-num {
+      font-family: var(--ff-display);
+      font-size: 64px; font-weight: 700;
+      color: var(--gold); line-height: 1;
+      margin-bottom: 8px;
+    }
+    .result-label { font-size: 14px; color: rgba(245,240,232,0.65); font-weight: 300; }
+    .result-sub { font-size: 12px; color: rgba(201,151,58,0.7); margin-top: 4px; }
+
+    /* ── TOPICS / IDEAS ── */
+    .topics { }
+    .topics-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; flex-wrap: wrap; gap: 24px; }
+    .topics-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .topic-card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 24px;
+      background: var(--white);
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+    .topic-card:hover { border-color: var(--forest-mid); transform: translateY(-2px); }
+    .topic-emoji { font-size: 32px; margin-bottom: 16px; }
+    .topic-name { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+    .topic-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .topic-chip {
+      display: inline-block; margin-top: 14px;
+      font-size: 10px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px;
+      border: 1px solid var(--border); color: var(--muted);
+    }
+
+    /* ── CONTACT ── */
+    .contact { background: var(--cream); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-form-wrap {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 48px;
+    }
+    .contact-form-title { font-family: var(--ff-display); font-size: 28px; font-weight: 700; color: var(--ink); margin-bottom: 32px; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-size: 13px; font-weight: 500; color: var(--charcoal); margin-bottom: 8px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--ff-body);
+      font-size: 14px; color: var(--ink);
+      background: var(--cream);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--forest-mid); }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .contact-info { padding-top: 16px; }
+    .contact-info-item { display: flex; gap: 16px; margin-bottom: 32px; }
+    .contact-info-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: var(--forest-pale);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .contact-info-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 4px; }
+    .contact-info-val { font-size: 15px; font-weight: 500; color: var(--ink); }
+    .social-links { display: flex; gap: 12px; margin-top: 40px; }
+    .social-link {
+      width: 40px; height: 40px; border-radius: 10px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--charcoal); text-decoration: none;
+      font-size: 18px; transition: background 0.2s, border-color 0.2s;
+    }
+    .social-link:hover { background: var(--forest); border-color: var(--forest); color: var(--cream); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(245,240,232,0.6);
+      padding: 60px 5vw 32px;
+    }
+    .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand-text { font-size: 13px; line-height: 1.7; margin-top: 16px; max-width: 280px; }
+    .footer-col-title { font-size: 13px; font-weight: 600; color: var(--cream); letter-spacing: 0.5px; margin-bottom: 16px; text-transform: uppercase; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: 13px; color: rgba(245,240,232,0.55); text-decoration: none; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(245,240,232,0.1);
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom-logo { display: flex; align-items: center; gap: 8px; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .animate { opacity: 0; }
+    .animate.in { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .delay-1 { animation-delay: 0.1s !important; }
+    .delay-2 { animation-delay: 0.2s !important; }
+    .delay-3 { animation-delay: 0.3s !important; }
+    .delay-4 { animation-delay: 0.4s !important; }
+    .delay-5 { animation-delay: 0.5s !important; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero-visual { display: none; }
+      .programs-grid { grid-template-columns: 1fr 1fr; }
+      .topics-grid { grid-template-columns: repeat(2,1fr); }
+      .about-inner, .why-inner, .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .results-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .programs-grid { grid-template-columns: 1fr; }
+      .topics-grid { grid-template-columns: 1fr 1fr; }
+      .about-values { grid-template-columns: 1fr; }
+      .results-grid { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 24px; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .topics-grid { grid-template-columns: 1fr; }
+      section { padding: 72px 5vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-mark">A</div>
+      <span class="nav-logo-text">Aspirants Hub</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#results">Results</a></li>
+      <li><a href="#topics">Resources</a></li>
+      <li><a href="#contact" class="nav-cta">Enroll Now</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#programs" onclick="toggleMenu()">Programs</a>
+    <a href="#results" onclick="toggleMenu()">Results</a>
+    <a href="#topics" onclick="toggleMenu()">Resources</a>
+    <a href="#contact" onclick="toggleMenu()">Enroll Now</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-grid-pattern"></div>
+    <div class="hero-content">
+      <div class="hero-badge animate">
+        <span class="hero-badge-dot"></span>
+        Hyderabad's Premier Coaching Institute
+      </div>
+      <h1 class="animate delay-1">
+        Unlock Your<br /><em>Full Potential</em>
+      </h1>
+      <p class="hero-sub animate delay-2">
+        Aspirants Hub is where ambitious minds become achievers. Expert coaching, proven methodology, and a community that drives you to the top.
+      </p>
+      <div class="hero-actions animate delay-3">
+        <a href="#programs" class="btn-primary">
+          Explore Programs
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#contact" class="btn-outline">Free Counselling</a>
+      </div>
+      <div class="hero-stats animate delay-4">
+        <div>
+          <div class="hero-stat-num">12,000+</div>
+          <div class="hero-stat-label">Students Placed</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">94%</div>
+          <div class="hero-stat-label">Success Rate</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">15+</div>
+          <div class="hero-stat-label">Years of Excellence</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Visual Cards -->
+    <div class="hero-visual">
+      <div class="hero-card-stack">
+        <div class="h-card h-card-2">
+          <div class="h-card-icon">🎯</div>
+          <div class="h-card-title">Target Score</div>
+          <div class="h-card-val">Top 1%</div>
+          <div class="h-card-sub">AIR Achievers this year</div>
+        </div>
+        <div class="h-card h-card-1">
+          <div class="h-card-title" style="font-size:12px;color:var(--muted);margin-bottom:14px;">Subject Mastery</div>
+          <div class="h-bar-row"><span class="h-bar-label">Maths</span><div class="h-bar-track"><div class="h-bar-fill" style="width:88%"></div></div><span style="font-size:11px;color:var(--muted)">88%</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">Science</span><div class="h-bar-track"><div class="h-bar-fill" style="width:76%"></div></div><span style="font-size:11px;color:var(--muted)">76%</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">GK</span><div class="h-bar-track"><div class="h-bar-fill" style="width:92%"></div></div><span style="font-size:11px;color:var(--muted)">92%</span></div>
+        </div>
+        <div class="h-card h-card-3">
+          <div style="font-size:12px;color:var(--muted);margin-bottom:10px;">Top Performers</div>
+          <div class="h-avatar-row">
+            <div class="h-avatar">R</div>
+            <div class="h-avatar" style="background:var(--gold)">P</div>
+            <div class="h-avatar" style="background:var(--charcoal)">A</div>
+            <div class="h-avatar">S</div>
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin-top:8px;">+240 this month</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-inner">
+      <div>
+        <div class="section-label animate">Who We Are</div>
+        <h2 class="section-title animate delay-1">Shaping Tomorrow's <em>Leaders</em></h2>
+        <p class="section-sub animate delay-2">Founded with a singular mission — to democratise quality education and help every aspirant unlock their highest potential through structured guidance, world-class faculty, and a results-first approach.</p>
+        <div class="about-values animate delay-3">
+          <div class="about-val">
+            <div class="about-val-icon">🎓</div>
+            <div class="about-val-title">Expert Faculty</div>
+            <div class="about-val-text">IIT, IIM & UPSC toppers turned educators with a passion for teaching.</div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-icon">📊</div>
+            <div class="about-val-title">Data-Driven</div>
+            <div class="about-val-text">Personalised analytics track every student's progress in real time.</div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-icon">🏆</div>
+            <div class="about-val-title">Proven Results</div>
+            <div class="about-val-text">Consistent top rankers across UPSC, GATE, CAT and banking exams.</div>
+          </div>
+          <div class="about-val">
+            <div class="about-val-icon">🤝</div>
+            <div class="about-val-title">Community First</div>
+            <div class="about-val-text">Peer learning groups, mentorship networks and lifelong alumni bonds.</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-right animate delay-2">
+        <blockquote class="about-quote">
+          "Success is not a destination — it is a habit we build, one question at a time."
+        </blockquote>
+        <div class="about-img-grid">
+          <div class="about-img-block">
+            <div class="about-img-block-num">15+</div>
+            <div class="about-img-block-label">Years of Excellence</div>
+          </div>
+          <div class="about-img-block about-img-block-sm">
+            <div class="about-img-block-num" style="color:var(--gold-light)">98%</div>
+            <div class="about-img-block-label">Student Satisfaction</div>
+          </div>
+          <div class="about-img-block about-img-block-sm">
+            <div class="about-img-block-num" style="color:var(--gold-light)">50+</div>
+            <div class="about-img-block-label">Expert Mentors</div>
+          </div>
+          <div class="about-img-block">
+            <div class="about-img-block-num">6</div>
+            <div class="about-img-block-label">Exam Streams</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section id="programs">
+    <div class="programs-header">
+      <div>
+        <div class="section-label animate">Our Programs</div>
+        <h2 class="section-title animate delay-1">Choose Your <em>Path</em></h2>
+      </div>
+      <p class="section-sub animate delay-2" style="max-width:380px;font-size:15px;">
+        Comprehensive courses designed for every competitive exam, from civil services to corporate entrance tests.
+      </p>
+    </div>
+    <div class="programs-grid">
+      <div class="program-card animate">
+        <div class="program-icon">🏛️</div>
+        <div class="program-tag">Civil Services</div>
+        <h3 class="program-title">UPSC / IAS Foundation</h3>
+        <p class="program-desc">Comprehensive preparation for Prelims, Mains and Interview with curated study material and mock tests.</p>
+        <ul class="program-topics">
+          <li>General Studies Papers I–IV</li>
+          <li>Optional Subject Coaching</li>
+          <li>Essay & Ethics Workshops</li>
+          <li>Interview Preparation</li>
+        </ul>
+        <div class="program-footer">
+          <span class="program-duration">12–24 months</span>
+          <a href="#contact" class="program-link">Enquire →</a>
+        </div>
+      </div>
+      <div class="program-card featured animate delay-1">
+        <div class="program-icon">⚙️</div>
+        <div class="program-tag">Engineering</div>
+        <h3 class="program-title">GATE / ESE Excellence</h3>
+        <p class="program-desc">Master engineering fundamentals with structured problem-solving and our exclusive question bank of 10,000+ problems.</p>
+        <ul class="program-topics">
+          <li>Core Engineering Subjects</li>
+          <li>Previous Year Analysis</li>
+          <li>Weekly Mock Exams</li>
+          <li>PSU Placement Guidance</li>
+        </ul>
+        <div class="program-footer">
+          <span class="program-duration">8–12 months</span>
+          <a href="#contact" class="program-link">Enquire →</a>
+        </div>
+      </div>
+      <div class="program-card animate delay-2">
+        <div class="program-icon">💼</div>
+        <div class="program-tag">Management</div>
+        <h3 class="program-title">CAT / MBA Prep</h3>
+        <p class="program-desc">Strategic CAT coaching covering Quant, VARC, and DILR with proven frameworks and IIM alumni mentorship.</p>
+        <ul class="program-topics">
+          <li>Quantitative Aptitude</li>
+          <li>Verbal Ability & RC</li>
+          <li>Data Interpretation & LR</li>
+          <li>GD / PI / WAT Coaching</li>
+        </ul>
+        <div class="program-footer">
+          <span class="program-duration">6–10 months</span>
+          <a href="#contact" class="program-link">Enquire →</a>
+        </div>
+      </div>
+      <div class="program-card animate delay-3">
+        <div class="program-icon">🏦</div>
+        <div class="program-tag">Banking &amp; Finance</div>
+        <h3 class="program-title">IBPS / SBI / RBI</h3>
+        <p class="program-desc">Complete banking exam preparation with current affairs, reasoning and quantitative aptitude modules.</p>
+        <ul class="program-topics">
+          <li>Reasoning &amp; Aptitude</li>
+          <li>English Language</li>
+          <li>Banking Awareness</li>
+          <li>Computer Knowledge</li>
+        </ul>
+        <div class="program-footer">
+          <span class="program-duration">4–6 months</span>
+          <a href="#contact" class="program-link">Enquire →</a>
+        </div>
+      </div>
+      <div class="program-card animate delay-4">
+        <div class="program-icon">🔬</div>
+        <div class="program-tag">Medical / Engineering</div>
+        <h3 class="program-title">JEE / NEET Crash</h3>
+        <p class="program-desc">Intensive preparation for JEE Mains, Advanced and NEET with formula-based revision and chapter tests.</p>
+        <ul class="program-topics">
+          <li>Physics, Chemistry, Biology</li>
+          <li>Mathematics (JEE)</li>
+          <li>NTA Mock Series</li>
+          <li>Doubt-clearing Sessions</li>
+        </ul>
+        <div class="program-footer">
+          <span class="program-duration">3–6 months</span>
+          <a href="#contact" class="program-link">Enquire →</a>
+        </div>
+      </div>
+      <div class="program-card animate delay-5">
+        <div class="program-icon">📋</div>
+        <div class="program-tag">Government Jobs</div>
+        <h3 class="program-title">SSC / State PSC</h3>
+        <p class="program-desc">All-in-one preparation for SSC CGL, CHSL, MTS and State PSC exams with bilingual study material.</p>
+        <ul class="program-topics">
+          <li>General Awareness</li>
+          <li>Logical Reasoning</li>
+          <li>Quantitative Aptitude</li>
+          <li>English &amp; Hindi Language</li>
+        </ul>
+        <div class="program-footer">
+          <span class="program-duration">3–8 months</span>
+          <a href="#contact" class="program-link">Enquire →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="results" id="results">
+    <div>
+      <div class="section-label animate">Track Record</div>
+      <h2 class="section-title animate delay-1">Numbers That <em>Speak</em></h2>
+    </div>
+    <div class="results-grid animate delay-2">
+      <div class="result-cell">
+        <div class="result-num">12K+</div>
+        <div class="result-label">Students Enrolled</div>
+        <div class="result-sub">Since 2009</div>
+      </div>
+      <div class="result-cell">
+        <div class="result-num">94%</div>
+        <div class="result-label">Selection Rate</div>
+        <div class="result-sub">Above national avg</div>
+      </div>
+      <div class="result-cell">
+        <div class="result-num">340+</div>
+        <div class="result-label">IAS/IPS Officers</div>
+        <div class="result-sub">Our alumni in service</div>
+      </div>
+      <div class="result-cell">
+        <div class="result-num">50+</div>
+        <div class="result-label">Expert Faculty</div>
+        <div class="result-sub">IIT/IIM/UPSC toppers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why" id="why">
+    <div class="why-inner">
+      <div>
+        <div class="section-label animate">Why Aspirants Hub</div>
+        <h2 class="section-title animate delay-1">The Edge You <em>Deserve</em></h2>
+        <p class="section-sub animate delay-2">We don't just teach — we transform. Our methodology is built on research, refined over 15 years of helping students beat the odds.</p>
+        <div class="why-features animate delay-3">
+          <div class="why-feat">
+            <div class="why-feat-num">01</div>
+            <div class="why-feat-body">
+              <div class="why-feat-title">Adaptive Learning Engine</div>
+              <div class="why-feat-text">AI-powered diagnostics identify your weak zones and auto-generate personalised practice sets so every minute of study counts.</div>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-num">02</div>
+            <div class="why-feat-body">
+              <div class="why-feat-title">Live + Recorded Classes</div>
+              <div class="why-feat-text">Attend live interactive sessions or revisit HD recordings — available 24/7 on any device with offline download support.</div>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-num">03</div>
+            <div class="why-feat-body">
+              <div class="why-feat-title">All-India Mock Test Series</div>
+              <div class="why-feat-text">Compete with 50,000+ aspirants on our full-length mocks, get ranked, and benchmark yourself against toppers in real time.</div>
+            </div>
+          </div>
+          <div class="why-feat">
+            <div class="why-feat-num">04</div>
+            <div class="why-feat-body">
+              <div class="why-feat-title">1-on-1 Mentorship</div>
+              <div class="why-feat-text">Every student is assigned a dedicated mentor who reviews progress weekly and provides personalised strategy guidance.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-right animate delay-2">
+        <div class="why-testimonials">
+          <div class="why-test">
+            <div class="why-test-stars">★★★★★</div>
+            <p class="why-test-text">"Aspirants Hub's structured approach to UPSC changed everything for me. The faculty's guidance was spot-on, and the mock interview sessions built enormous confidence."</p>
+            <div class="why-test-author">
+              <div class="why-test-avatar">RS</div>
+              <div>
+                <div class="why-test-name">Rahul Sharma</div>
+                <div class="why-test-role">IAS 2023 — AIR 47</div>
+              </div>
+              <div class="why-test-badge">UPSC</div>
+            </div>
+          </div>
+          <div class="why-test">
+            <div class="why-test-stars">★★★★★</div>
+            <p class="why-test-text">"The GATE preparation material and the way mentors tracked my weak topics was incredible. I cleared GATE with AIR 28 and joined DRDO."</p>
+            <div class="why-test-author">
+              <div class="why-test-avatar" style="background:var(--gold)">PA</div>
+              <div>
+                <div class="why-test-name">Priya Agarwal</div>
+                <div class="why-test-role">GATE ECE 2023 — AIR 28</div>
+              </div>
+              <div class="why-test-badge">GATE</div>
+            </div>
+          </div>
+          <div class="why-test">
+            <div class="why-test-stars">★★★★★</div>
+            <p class="why-test-text">"CAT 99.4 percentile. The VARC modules and DI shortcuts here are unmatched anywhere in Hyderabad. IIM Ahmedabad is calling!"</p>
+            <div class="why-test-author">
+              <div class="why-test-avatar" style="background:var(--charcoal)">AK</div>
+              <div>
+                <div class="why-test-name">Ananya Krishnan</div>
+                <div class="why-test-role">CAT 2023 — 99.4 percentile</div>
+              </div>
+              <div class="why-test-badge">CAT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOPICS / IDEAS -->
+  <section id="topics" style="background:var(--forest-pale)">
+    <div class="topics-header">
+      <div>
+        <div class="section-label animate">Ideas & Resources</div>
+        <h2 class="section-title animate delay-1">Topics We <em>Champion</em></h2>
+      </div>
+      <p class="section-sub animate delay-2" style="font-size:15px;max-width:360px;">
+        Beyond exam prep — we build holistic thinkers. These are the ideas that drive our curriculum and inspire our students.
+      </p>
+    </div>
+    <div class="topics-grid animate delay-2">
+      <div class="topic-card">
+        <div class="topic-emoji">🧠</div>
+        <div class="topic-name">Critical Thinking</div>
+        <div class="topic-desc">Analytical reasoning and logical deduction form the backbone of every exam and every career. We embed it in every session.</div>
+        <div class="topic-chip">Core Skill</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-emoji">📰</div>
+        <div class="topic-name">Current Affairs</div>
+        <div class="topic-desc">Daily news briefs, monthly compilations and context-driven explainers that connect real events to exam syllabi.</div>
+        <div class="topic-chip">Daily Update</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-emoji">📈</div>
+        <div class="topic-name">Economics & Policy</div>
+        <div class="topic-desc">India's budget, monetary policy and global economic trends — explained plainly for GS and Economics optional students.</div>
+        <div class="topic-chip">UPSC / CAT</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-emoji">🌿</div>
+        <div class="topic-name">Environment & Ecology</div>
+        <div class="topic-desc">Climate, biodiversity and sustainability — a growing area in civil services exams that our dedicated module covers in depth.</div>
+        <div class="topic-chip">GS Paper III</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-emoji">💡</div>
+        <div class="topic-name">Science & Technology</div>
+        <div class="topic-desc">From ISRO missions to AI breakthroughs — stay current with our S&T tracker curated by our technology faculty team.</div>
+        <div class="topic-chip">Multi-Exam</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-emoji">⚖️</div>
+        <div class="topic-name">Ethics & Governance</div>
+        <div class="topic-desc">The most feared UPSC paper, made simple. Case studies, value frameworks and writing workshops every fortnight.</div>
+        <div class="topic-chip">GS Paper IV</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-emoji">🗺️</div>
+        <div class="topic-name">Indian History & Culture</div>
+        <div class="topic-desc">Ancient, Medieval and Modern India — mapped visually with timelines, maps and memory techniques that actually stick.</div>
+        <div class="topic-chip">GS Paper I</div>
+      </div>
+      <div class="topic-card">
+        <div class="topic-emoji">🧮</div>
+        <div class="topic-name">Quantitative Methods</div>
+        <div class="topic-desc">From CAT Quant to GATE mathematics — shortcut techniques, formula sheets and timed drills for every level of learner.</div>
+        <div class="topic-chip">All Exams</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact-inner">
+      <div>
+        <div class="section-label animate">Get In Touch</div>
+        <h2 class="section-title animate delay-1">Start Your <em>Journey</em></h2>
+        <p class="section-sub animate delay-2">Book a free 30-minute counselling session with our academic advisors and discover which program fits your goals perfectly.</p>
+        <div style="margin-top:48px">
+          <div class="contact-info-item animate delay-2">
+            <div class="contact-info-icon">📍</div>
+            <div>
+              <div class="contact-info-label">Address</div>
+              <div class="contact-info-val">4th Floor, Aspirants Hub, Himayatnagar, Hyderabad — 500029</div>
+            </div>
+          </div>
+          <div class="contact-info-item animate delay-3">
+            <div class="contact-info-icon">📞</div>
+            <div>
+              <div class="contact-info-label">Phone</div>
+              <div class="contact-info-val">+91 40 2345 6789</div>
+            </div>
+          </div>
+          <div class="contact-info-item animate delay-4">
+            <div class="contact-info-icon">✉️</div>
+            <div>
+              <div class="contact-info-label">Email</div>
+              <div class="contact-info-val">hello@aspirantshub.in</div>
+            </div>
+          </div>
+          <div class="contact-info-item animate delay-5">
+            <div class="contact-info-icon">⏰</div>
+            <div>
+              <div class="contact-info-label">Centre Hours</div>
+              <div class="contact-info-val">Mon–Sat: 7 AM – 9 PM &nbsp;|&nbsp; Sun: 9 AM – 5 PM</div>
+            </div>
+          </div>
+        </div>
+        <div class="social-links animate delay-5">
+          <a href="#" class="social-link" title="YouTube">▶</a>
+          <a href="#" class="social-link" title="Instagram">◈</a>
+          <a href="#" class="social-link" title="Telegram">✈</a>
+          <a href="#" class="social-link" title="WhatsApp">✆</a>
+          <a href="#" class="social-link" title="LinkedIn">in</a>
+        </div>
+      </div>
+      <div class="animate delay-3">
+        <div class="contact-form-wrap">
+          <div class="contact-form-title">Book a Free Counselling</div>
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" placeholder="Arjun" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" placeholder="Reddy" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" placeholder="+91 98765 43210" />
+            </div>
+            <div class="form-group">
+              <label for="exam">Exam I'm Targeting</label>
+              <select id="exam">
+                <option value="">Select an exam...</option>
+                <option>UPSC / IAS</option>
+                <option>GATE / ESE</option>
+                <option>CAT / MBA</option>
+                <option>IBPS / SBI / RBI</option>
+                <option>JEE / NEET</option>
+                <option>SSC / State PSC</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Anything you'd like us to know</label>
+              <textarea id="message" placeholder="E.g. I'm a working professional looking for weekend batches..."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border:none;cursor:pointer;font-family:var(--ff-body)">
+              Book Free Session
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </form>
+          <div id="form-success" style="display:none;margin-top:20px;padding:16px;background:var(--forest-pale);border-radius:8px;color:var(--forest);font-size:14px;text-align:center;font-weight:500;">
+            ✅ Thank you! We'll reach out within 24 hours.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <a class="nav-logo" href="#" style="text-decoration:none;">
+          <div class="nav-logo-mark">A</div>
+          <span class="nav-logo-text" style="color:var(--cream)">Aspirants Hub</span>
+        </a>
+        <p class="footer-brand-text">Empowering aspirants across India since 2009. Quality coaching, extraordinary results.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Programs</div>
+        <ul>
+          <li><a href="#programs">UPSC / IAS</a></li>
+          <li><a href="#programs">GATE / ESE</a></li>
+          <li><a href="#programs">CAT / MBA</a></li>
+          <li><a href="#programs">Banking Exams</a></li>
+          <li><a href="#programs">JEE / NEET</a></li>
+          <li><a href="#programs">SSC / PSC</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Resources</div>
+        <ul>
+          <li><a href="#topics">Free Study Notes</a></li>
+          <li><a href="#topics">Mock Test Series</a></li>
+          <li><a href="#topics">Current Affairs</a></li>
+          <li><a href="#topics">Video Lectures</a></li>
+          <li><a href="#topics">Question Bank</a></li>
+          <li><a href="#topics">Previous Papers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#why">Our Faculty</a></li>
+          <li><a href="#results">Toppers</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Aspirants Hub. All rights reserved. Built with excellence in Hyderabad.</span>
+      <span style="color:rgba(245,240,232,0.3)">aspirantshub.in</span>
+    </div>
+  </footer>
+
+  <script>
+    // Hamburger
+    function toggleMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+    }
+
+    // Intersection Observer for scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+    async function handleSubmit(e) {
+  e.preventDefault();
+
+  // Build the payload — field names must exactly match the schema
+  const payload = {
+    event_id:      crypto.randomUUID(),
+    event_type:    'free_session_enquiry',
+    timestamp:     new Date().toISOString(),
+    first_name:    document.getElementById('fname').value.trim(),
+    last_name:     document.getElementById('lname').value.trim(),
+    email:         document.getElementById('email').value.trim().toLowerCase(),
+    phone:         document.getElementById('phone').value.trim(),
+    exam_interest: document.getElementById('exam').value,
+    message:       document.getElementById('message').value.trim(),
+    page_url:      window.location.href,
+    session_id:    getOrCreateSessionId()
+  };
+
+  // Validate required fields before sending
+  if (!payload.email || !payload.event_id || !payload.timestamp) {
+    alert('Please fill in all required fields.');
+    return;
+  }
+
+  try {
+    // POST to your Vercel proxy (you will create this in the next step)
+    const response = await fetch('/api/ingest', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+    } else {
+      const err = await response.text();
+      console.error('Ingest failed:', err);
+      alert('Something went wrong. Please try again.');
+    }
+  } catch (error) {
+    console.error('Network error:', error);
+    alert('Network error. Please check your connection and try again.');
+  }
+}
+
+function getOrCreateSessionId() {
+  let sid = sessionStorage.getItem('ah_session_id');
+  if (!sid) {
+    sid = 'sess_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    sessionStorage.setItem('ah_session_id', sid);
+  }
+  return sid;
+}
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 60) {
+        nav.style.boxShadow = '0 2px 24px rgba(14,26,18,0.08)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+
+    // Smooth close mobile menu on link click
+    document.querySelectorAll('.mobile-menu a').forEach(a => {
+      a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
