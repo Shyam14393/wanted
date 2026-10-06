@@ -26,10 +26,11 @@ async function getSalesforceToken() {
     const error = await response.text();
     throw new Error('Token fetch failed: ' + error);
   }
-
+  
   const data     = await response.json();
   cachedToken    = data.access_token;
   // Cache for expiry minus 5 minutes buffer
+  console.log('Token received', data.access_token);
   tokenExpiry    = Date.now() + (data.expires_in - 300) * 1000;
   return cachedToken;
 }
